@@ -115,11 +115,11 @@ func main() {
         e.POST("/users/ban", banUser, AdminAuth)
         e.POST("/users/unban", unBanUser, AdminAuth)
 
-        e.GET("/", test)
+        e.GET("/", test2)
 
         e.Logger.Fatal(e.Start(":8082"))
 }
 
-func test(c echo.Context) error {
+func test2(c echo.Context) error {
         return c.JSON(http.StatusOK, "auth")
 }
