@@ -108,9 +108,9 @@ func main() {
 
         // User Endpoints
         e.GET("/users", getUsers, Auth)
-        e.GET("/users/:id", getUser, AdminAuth)
-        e.PUT("/users/:id", updateUser)
-        e.DELETE("/users/:id", deleteUser)
+        e.GET("/users/:id", getUser, Auth)
+        e.PUT("/users/:id", updateUser, AdminAuth)
+        e.DELETE("/users/:id", deleteUser, AdminAuth)
 
         e.POST("/users/ban", banUser, AdminAuth)
         e.POST("/users/unban", unBanUser, AdminAuth)
