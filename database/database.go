@@ -13,7 +13,7 @@ var DB *pgxpool.Pool
 
 func init() {
     // Load the .env file
-    err := godotenv.Load("database/.env")
+    err := godotenv.Load(".env")
     if err != nil {
         log.Fatalf("Error loading .env file: %v", err)
     }
@@ -22,8 +22,8 @@ func init() {
 func Connect() {
         dbURL := os.Getenv("DATABASE_URL")
         if dbURL == "" {
-        log.Fatal("DATABASE_URL is not set")
-    }
+                log.Fatal("DATABASE_URL is not set")
+        }
         var err error
         DB, err = pgxpool.Connect(context.Background(), dbURL)
         if err != nil {
