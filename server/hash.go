@@ -1,7 +1,7 @@
-package main
+package server
 
 import (
-        "golang.org/x/crypto/bcrypt"
+    "golang.org/x/crypto/bcrypt"
 )
 
 func hashPassword(password string) (string, error) {

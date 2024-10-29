@@ -1,39 +1,20 @@
-package main 
+package server 
 
 import (
         "app/database"
         "app/models"
-		"os"
+
         "net/http"
         "context"
         "strconv"
         "time"
         "log"
-		"github.com/joho/godotenv"
+
         "github.com/google/uuid"
         "github.com/labstack/echo/v4"
         "github.com/golang-jwt/jwt/v5"
 )
 
-var jwtToken string
-
-func init() {
-    err := godotenv.Load(".env")
-    if err != nil {
-        log.Fatalf("Error loading .env file: %v", err)
-    }
-	jwtToken = os.Getenv("JWT_TOKEN")
-}
-
-var jwtSecret = []byte(jwtToken)
-
-type Claims struct {
-        Username string `json:"username"`
-        ID uuid.UUID `json:"id"`
-        Role int `json:"role"`
-        Status int `json:"status"`
-        jwt.RegisteredClaims
-}
 
 func loginUser(c echo.Context) error {
         login := new(models.LoginRequest)
