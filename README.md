@@ -10,4 +10,11 @@
 - Captcha 
 - Multi tenancy support
 - Docker file (in progress)  
-- Docker compose 
+- Docker compose
+## Setup
+
+Download the repository and run `go mod tidy`
+
+Create a postgres server and create the tables
+
+run `go run .` or `go build -o auth` and `./auth` for a binary 
