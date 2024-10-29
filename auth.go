@@ -3,19 +3,29 @@ package main
 import (
         "app/database"
         "app/models"
-
+		"os"
         "net/http"
         "context"
         "strconv"
         "time"
         "log"
-
+		"github.com/joho/godotenv"
         "github.com/google/uuid"
         "github.com/labstack/echo/v4"
         "github.com/golang-jwt/jwt/v5"
 )
 
-var jwtSecret = []byte("asdsadsasaddsa24432!")
+var jwtToken string
+
+func init() {
+    err := godotenv.Load(".env")
+    if err != nil {
+        log.Fatalf("Error loading .env file: %v", err)
+    }
+	jwtToken = os.Getenv("JWT_TOKEN")
+}
+
+var jwtSecret = []byte(jwtToken)
 
 type Claims struct {
         Username string `json:"username"`
