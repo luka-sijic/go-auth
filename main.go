@@ -5,7 +5,6 @@ import (
 	"app/server"
 )
 
-
 func main() {
 	database.Connect()
 	defer database.Close()
